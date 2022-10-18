@@ -14,14 +14,15 @@ public class Comprador {
         }     
     }
 
-    public int getVuelto(){
+    public String getVuelto(){
         Moneda m;
-        m = this.exp.getVuelto();
-        vuelto = vuelto + m.getValor();
-        if(this.exp.HayMonedas()!=0){
-            return m.getValor();
+        
+        if(this.exp.HayMonedas()>0){
+            m = this.exp.getVuelto();
+            vuelto = vuelto + m.getValor();
+            return String.valueOf(m.getValor());
         }else{
-            return vuelto;
+            return "null";
         }
     }
         
