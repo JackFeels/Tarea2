@@ -27,9 +27,9 @@ public class Expendedor {
         }
     }
     public Bebida comprarBebida(Moneda m, int cual){
-        if(m == null || m.getValor() < precio){
+        if(m == null || m.getValor() < precio){
             this.vuelto.addMoneda(m);
-            return null;    
+            return null;   
         } else {
                 
                 }
