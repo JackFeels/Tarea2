@@ -14,7 +14,6 @@ public class Tarea2 {
         System.out.println(c.getVuelto());
         System.out.println(c.getVuelto());
         System.out.println(c.getVuelto());
-        System.out.println(c.getVuelto());
         System.out.println(c.getqueBebida());   
     }
 }

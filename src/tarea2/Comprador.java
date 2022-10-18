@@ -17,10 +17,14 @@ public class Comprador {
     public String getVuelto(){
         Moneda m;
         
-        if(this.exp.HayMonedas()>0){
+        if(this.exp.HayMonedas()>1){
             m = this.exp.getVuelto();
             vuelto = vuelto + m.getValor();
             return String.valueOf(m.getValor());
+        }else if(this.exp.HayMonedas() == 1){
+            m = this.exp.getVuelto();
+            vuelto = vuelto + m.getValor();
+            return String.valueOf(m.getValor())+ "\n" + "El vuelto es: " +String.valueOf(vuelto);
         }else{
             return "null";
         }
