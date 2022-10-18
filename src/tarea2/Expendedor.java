@@ -29,9 +29,14 @@ public class Expendedor {
     }
 
     public Bebida comprarBebida(Moneda m, int cual) {
-        if (m == null || m.getValor() < precio) {
+        if (m == null) {
             this.vuelto.addMoneda(m);
+            System.out.println("PagoIncorrectoException");
             return null;
+        }else if(m.getValor() < precio){
+            this.vuelto.addMoneda(m);
+            System.out.println("NoHayBebidaException");
+            return null;        
         } else {
             Bebida b = null;
             switch (cual) {
