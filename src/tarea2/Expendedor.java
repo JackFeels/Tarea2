@@ -1,4 +1,3 @@
-
 package tarea2;
 
 public class Expendedor {
@@ -29,14 +28,66 @@ public class Expendedor {
     public Bebida comprarBebida(Moneda m, int cual){
         if(m == null || m.getValor() < precio){
             this.vuelto.addMoneda(m);
-            return null;   
-        } else {
-                
+            return null;    
+        }else{
+            Bebida b = null;
+            switch(cual){
+                case 1 -> {
+                    b = SacaBebida(coca);
+                    if(b==null){
+                        return null;
+                    }else{
+                        Vuelto100(CalcularVuelto(m));
+                    }
                 }
+                
+                case 2 -> {
+                    b = SacaBebida(fanta);
+                    if(b==null){
+                        return null;
+                    }else{
+                        Vuelto100(CalcularVuelto(m));
+                    }
+                }
+                
+                case 3 -> {
+                    b = SacaBebida(sprite);
+                    if(b==null){
+                        return null;
+                    }else{
+                        Vuelto100(CalcularVuelto(m));
+                    }  
+                }
+            }
+            return b;
+        }
     }
     
     
     public Moneda getVuelto(){
         return vuelto.getMoneda();
     }
+    
+    public int CalcularVuelto(Moneda m){
+       if(m.getValor() - precio>0){
+            int v= m.getValor() - precio;
+            return v;
+        }else{
+            return 0;
+        }
+    }
+    
+    public Bebida SacaBebida(Deposito d){
+        return d.getBebida();
+    }
+    
+    public void Vuelto100(int vuelto){
+        int v= vuelto;
+        while(v>0){
+            Moneda n = new Moneda100();
+            this.vuelto.addMoneda(n);
+            v = v-100;
+        }
+    }
 }
+
