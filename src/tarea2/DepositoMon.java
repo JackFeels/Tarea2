@@ -22,4 +22,8 @@ public class DepositoMon {
         ar.remove(0);
         return m;
     }
+    
+    public int Size(){
+        return ar.size();
+    }
 }

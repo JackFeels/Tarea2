@@ -1,4 +1,5 @@
 package tarea2;
+import java.util.ArrayList;
 
 public class Expendedor {
 
@@ -89,6 +90,10 @@ public class Expendedor {
             this.vuelto.addMoneda(n);
             v = v - 100;
         }
+    }
+    
+    public int HayMonedas(){
+        return vuelto.Size();
     }
 }
 
