@@ -28,14 +28,16 @@ public class Expendedor {
         }
     }
 
-    public Bebida comprarBebida(Moneda m, int cual) {
+    public Bebida comprarBebida(Moneda m, int cual) throws NoHayBebidaException{ 
+        if(this.coca.getBebida() == null || this.sprite.getBebida() == null || this.fanta.getBebida() == null){
+        throw new NoHayBebidaException("No hay esta Bebida");
+        }
+        else {
         if (m == null) {
             this.vuelto.addMoneda(m);
-            System.out.println("PagoIncorrectoException");
             return null;
         }else if(m.getValor() < precio){
             this.vuelto.addMoneda(m);
-            System.out.println("NoHayBebidaException");
             return null;        
         } else {
             Bebida b = null;
@@ -69,6 +71,7 @@ public class Expendedor {
             }
             return b;
         }
+    }
     }
 
     public Moneda getVuelto() {

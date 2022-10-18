@@ -1,13 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package tarea2;
 
-/**
- *
- * @author jackfeels
- */
-public class PagoIncorrectoException {
-    
+public class PagoIncorrectoException extends Exception {
+    public PagoIncorrectoException(String errorMessage){
+        super(errorMessage);
+    }
 }

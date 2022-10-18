@@ -8,10 +8,15 @@ public class Comprador {
     private Expendedor exp;
     public Comprador(Moneda m, int cualBebida, Expendedor exp){
         this.exp=exp;
+        try {
         Bebida b = exp.comprarBebida(m, cualBebida);
         if (b != null) {
             this.queBebida = b.beber();
-        }     
+        }    
+        } catch(NoHayBebidaException e){
+            System.out.println("No hay bebida");
+        }
+         
     }
 
     public String getVuelto(){
