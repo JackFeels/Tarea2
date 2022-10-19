@@ -15,8 +15,11 @@ public class Comprador {
         }    
         } catch(NoHayBebidaException e){
             System.out.println("No hay bebida");
+        } catch(PagoInsuficienteException e){
+            System.out.println("Pago Insuficiente");
+        } catch (PagoIncorrectoException e){
+            System.out.println("Pago Incorrecto");
         }
-         
     }
 
     public String getVuelto(){

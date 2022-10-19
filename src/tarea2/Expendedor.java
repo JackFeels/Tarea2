@@ -28,28 +28,26 @@ public class Expendedor {
         }
     }
 
-    public Bebida comprarBebida(Moneda m, int cual) throws NoHayBebidaException{ 
+    public Bebida comprarBebida(Moneda m, int cual) throws NoHayBebidaException, PagoInsuficienteException, PagoIncorrectoException{ 
         if(this.coca.getBebida() == null || this.sprite.getBebida() == null || this.fanta.getBebida() == null){
-        throw new NoHayBebidaException("No hay esta Bebida");
-        }
+            throw new NoHayBebidaException("No hay esta Bebida");
+            }
         else {
-        if (m == null) {
-            this.vuelto.addMoneda(m);
-            return null;
-        }else if(m.getValor() < precio){
-            this.vuelto.addMoneda(m);
-            return null;        
-        } else {
-            Bebida b = null;
-            switch (cual) {
-                case 1 -> {
-                    b = SacaBebida(coca);
-                    if (b == null) {
-                        return null;
-                    } else {
-                        Vuelto100(CalcularVuelto(m));
+            if (m == null) { 
+                throw new PagoIncorrectoException ("Pago Incorrecto"); 
+            } else if (m.getValor() < precio){
+                throw new PagoInsuficienteException ("Pago Insuficiente");        
+            } else {
+                Bebida b = null;
+                switch (cual) {
+                    case 1 -> {
+                        b = SacaBebida(coca);
+                        if (b == null) {
+                            return null;
+                        } else {
+                             Vuelto100(CalcularVuelto(m));
+                        }
                     }
-                }
 
                 case 2 -> {
                     b = SacaBebida(fanta);
@@ -71,7 +69,7 @@ public class Expendedor {
             }
             return b;
         }
-    }
+        }
     }
 
     public Moneda getVuelto() {
