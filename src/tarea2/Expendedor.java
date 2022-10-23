@@ -29,46 +29,46 @@ public class Expendedor {
     }
 
     public Bebida comprarBebida(Moneda m, int cual) throws NoHayBebidaException, PagoInsuficienteException, PagoIncorrectoException{ 
-        if(this.coca.getBebida() == null || this.sprite.getBebida() == null || this.fanta.getBebida() == null){
+        if(this.coca.Size() == 0 || this.sprite.Size() == 0 || this.fanta.Size() == 0){
             throw new NoHayBebidaException("No hay esta Bebida");
-            }
-        else {
+        }else{
             if (m == null) { 
                 throw new PagoIncorrectoException ("Pago Incorrecto"); 
             } else if (m.getValor() < precio){
+                this.vuelto.addMoneda(m);
                 throw new PagoInsuficienteException ("Pago Insuficiente");        
-            } else {
-                Bebida b = null;
-                switch (cual) {
-                    case 1 -> {
-                        b = SacaBebida(coca);
+                } else {
+                    Bebida b = null;
+                    switch (cual) {
+                        case 1 -> {
+                            b = SacaBebida(coca);
+                            if (b == null) {
+                                return null;
+                            } else {
+                                 Vuelto100(CalcularVuelto(m));
+                            }
+                        }
+
+                    case 2 -> {
+                        b = SacaBebida(fanta);
                         if (b == null) {
                             return null;
                         } else {
-                             Vuelto100(CalcularVuelto(m));
+                            Vuelto100(CalcularVuelto(m));
                         }
                     }
 
-                case 2 -> {
-                    b = SacaBebida(fanta);
-                    if (b == null) {
-                        return null;
-                    } else {
-                        Vuelto100(CalcularVuelto(m));
+                    case 3 -> {
+                        b = SacaBebida(sprite);
+                        if (b == null) {
+                            return null;
+                        } else {
+                            Vuelto100(CalcularVuelto(m));
+                        }
                     }
                 }
-
-                case 3 -> {
-                    b = SacaBebida(sprite);
-                    if (b == null) {
-                        return null;
-                    } else {
-                        Vuelto100(CalcularVuelto(m));
-                    }
-                }
+                return b;
             }
-            return b;
-        }
         }
     }
 
@@ -80,7 +80,7 @@ public class Expendedor {
         if (m.getValor() - precio > 0) {
             int v = m.getValor() - precio;
             return v;
-        } else {
+        }else{
             return 0;
         }
     }

@@ -22,4 +22,8 @@ public class Deposito {
         ar.remove(0);
         return b;
     }
+    
+    public int Size(){
+        return ar.size();
+    }
 }
